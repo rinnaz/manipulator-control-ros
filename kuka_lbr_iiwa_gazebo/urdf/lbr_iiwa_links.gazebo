@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot name="iiwa" xmlns:xacro="http://ros.org/wiki/xacro">
+
+<!-- ==================================================== -->
+<!-- |                    LINKS CONFIGS                 | -->
+<!-- ==================================================== -->
+
+	<xacro:macro name="default_inertial">
+		<inertial>
+			<origin xyz="0 0 0" rpy="0 0 0"/>
+			<mass value="5" />
+			<inertia  ixx="1" ixy="0.0" ixz="0.0"
+                iyy="1" iyz="0.0"
+                izz="1" />
+    </inertial>
+	</xacro:macro>
+
+  <gazebo reference="${prefix}base_link">
+    <selfCollide>true</selfCollide>
+    <xacro:default_inertial />
+  </gazebo>
+
+  <gazebo reference="${prefix}link_1">
+    <mu1>0.2</mu1>
+    <mu2>0.2</mu2>
+    <selfCollide>true</selfCollide>
+    <xacro:default_inertial />
+  </gazebo>
+
+  <gazebo reference="${prefix}link_2">
+    <mu1>0.2</mu1>
+    <mu2>0.2</mu2>
+    <selfCollide>true</selfCollide>
+    <xacro:default_inertial />
+  </gazebo>
+  
+  <gazebo reference="${prefix}link_3">
+    <mu1>0.2</mu1>
+    <mu2>0.2</mu2>
+    <selfCollide>true</selfCollide>
+    <xacro:default_inertial />
+  </gazebo>
+
+  <gazebo reference="${prefix}link_4">
+    <mu1>0.2</mu1>
+    <mu2>0.2</mu2>
+    <selfCollide>true</selfCollide>
+    <xacro:default_inertial />
+  </gazebo>
+
+  <gazebo reference="${prefix}link_5">
+    <mu1>0.2</mu1>
+    <mu2>0.2</mu2>
+    <selfCollide>true</selfCollide>
+    <xacro:default_inertial />
+  </gazebo>
+  
+  <gazebo reference="${prefix}link_6">
+    <mu1>0.2</mu1>
+    <mu2>0.2</mu2>
+    <selfCollide>true</selfCollide>
+    <xacro:default_inertial />
+  </gazebo>
+
+  <gazebo reference="${prefix}link_7">
+    <selfCollide>true</selfCollide>
+    <xacro:default_inertial />
+  </gazebo>
+
+</robot>

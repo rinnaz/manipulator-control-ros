@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot name="kuka_lbr_iiwa_14_r820" xmlns:xacro="http://ros.org/wiki/xacro">
+
+<!-- ==================================================== -->
+<!-- |                      CAMERAS                     | -->
+<!-- ==================================================== -->
+  
+  <!-- EE cameras  -->
+  <xacro:camera_gen ref="${prefix}link_7" 
+                    name="ee_camera"
+                    pose="0 0 0 ${PI} ${-PI/2} ${PI/2}" 
+                    fov="86"/>
+
+</robot>

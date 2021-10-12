@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot name="kuka_lbr_iiwa_14_r820" xmlns:xacro="http://ros.org/wiki/xacro">
+
+<!-- ======== ARG SECTION ========= -->
+
+<!-- ======= IMPORT SECTION ======= -->
+
+<!-- Import main xacro -->
+	<xacro:include filename="$(find kuka_lbr_iiwa_support)/urdf/lbr_iiwa_14_r820.xacro" />
+
+<!-- Import Gazebo elements: properties -->
+	<xacro:include filename="$(find kuka_lbr_iiwa_gazebo)/urdf/lbr_iiwa_properties.xacro" />
+
+<!-- Import Gazebo elements: macros -->
+	<xacro:include filename="$(find kuka_lbr_iiwa_gazebo)/urdf/lbr_iiwa_macros.gazebo" />
+
+<!-- Import Gazebo elements: links settings -->
+	<xacro:include filename="$(find kuka_lbr_iiwa_gazebo)/urdf/lbr_iiwa_links.gazebo" />
+
+<!-- Import Gazebo elements: cameras & lights -->
+	<xacro:include filename="$(find kuka_lbr_iiwa_gazebo)/urdf/lbr_iiwa_cameras.gazebo" />
+
+<!-- Import Gazebo elements: ROS-Gazebo plugins -->
+	<xacro:include filename="$(find kuka_lbr_iiwa_gazebo)/urdf/lbr_iiwa_plugins.gazebo" />
+
+<!-- ========  ======= -->
+
+	<!-- TRANSMISSIONS for gazebo sim -->
+	
+	<!-- Right arm -->
+	<xacro:trans_gen number="1" />
+	<xacro:trans_gen number="2" />
+	<xacro:trans_gen number="3" />
+	<xacro:trans_gen number="4" />
+	<xacro:trans_gen number="5" />
+	<xacro:trans_gen number="6" />
+	<xacro:trans_gen number="7" />
+
+</robot>
