@@ -1,0 +1,44 @@
+ <!--   <?xml version="1.0"?> -->
+<launch>
+  <!-- Commnad line arguments, for example model:=superbot.gazebo -->
+  <!-- Define Gazebo config -->
+  <arg  name="paused" default="false"/>
+  <arg  name="use_sim_time" default="true"/>
+  <arg  name="gui" default="true"/>
+  <arg  name="recording" default="false"/>
+  <arg  name="debug" default="false"/>
+  <arg  name="verbose" default="false"/>
+  <arg  name="model" 
+        default="lbr_iiwa.gazebo" />
+  <!-- Define Robot URDF model filename -->
+<!-- !!! Change default value when URDF is ready -->
+  <!-- <arg  name="model" default="rrbot.gazebo"/> -->
+  
+  <!-- Using logic in gazebo_ros package empty_world.launch -->
+  <include file="$(find gazebo_ros)/launch/empty_world.launch">
+    <!-- Using world world from cv_gazebo -->
+    <arg  name="world_name" value="$(find kuka_lbr_iiwa_gazebo)/worlds/cv-markers.world"/>
+    <!-- Set Gazebo config -->
+    <arg  name="paused" value="$(arg paused)"/>
+    <arg  name="use_sim_time" value="$(arg use_sim_time)"/>
+    <arg  name="gui" value="$(arg gui)"/>
+    <arg  name="recording" value="$(arg recording)"/>
+    <arg  name="debug" value="$(arg debug)"/>
+    <arg  name="verbose" value="$(arg verbose)"/>
+    <!-- Skip looking for models online -->
+    <env name="GAZEBO_MODEL_DATABASE_URI" value="" />
+    <!-- Set path for models -->
+    <env name="GAZEBO_MODEL_PATH" value="$(find kuka_lbr_iiwa_gazebo)/sdf" />
+  </include>
+
+  <param  name="robot_description"
+          command="$(find xacro)/xacro '$(find kuka_lbr_iiwa_gazebo)/urdf/$(arg model)'" />
+
+  <node name="spawn_urdf" 
+        pkg="gazebo_ros" 
+        type="spawn_model" 
+        respawn="false" 
+        output="screen"
+        args="-param robot_description -urdf -model iiwa" />
+
+</launch>
