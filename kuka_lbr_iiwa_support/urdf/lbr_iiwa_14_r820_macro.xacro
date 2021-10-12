@@ -15,6 +15,13 @@
           <mesh filename="package://kuka_lbr_iiwa_support/meshes/lbr_iiwa_14_r820/collision/base_link.stl" />
         </geometry>
       </collision>
+    <inertial>
+			<origin xyz="0 0 0" rpy="0 0 0"/>
+			<mass value="5" />
+			<inertia  ixx="1" ixy="0.0" ixz="0.0"
+                iyy="1" iyz="0.0"
+                izz="1" />
+    </inertial>
     </link>
     <link name="${prefix}link_1">
       <visual>
@@ -29,6 +36,13 @@
           <mesh filename="package://kuka_lbr_iiwa_support/meshes/lbr_iiwa_14_r820/collision/link_1.stl" />
         </geometry>
       </collision>
+    <inertial>
+			<origin xyz="0 0 0" rpy="0 0 0"/>
+			<mass value="5" />
+			<inertia  ixx="1" ixy="0.0" ixz="0.0"
+                iyy="1" iyz="0.0"
+                izz="1" />
+    </inertial>
     </link>
     <link name="${prefix}link_2">
       <visual>
@@ -43,6 +57,13 @@
           <mesh filename="package://kuka_lbr_iiwa_support/meshes/lbr_iiwa_14_r820/collision/link_2.stl" />
         </geometry>
       </collision>
+    <inertial>
+			<origin xyz="0 0 0" rpy="0 0 0"/>
+			<mass value="5" />
+			<inertia  ixx="1" ixy="0.0" ixz="0.0"
+                iyy="1" iyz="0.0"
+                izz="1" />
+    </inertial>
     </link>
     <link name="${prefix}link_3">
       <visual>
@@ -57,6 +78,13 @@
           <mesh filename="package://kuka_lbr_iiwa_support/meshes/lbr_iiwa_14_r820/collision/link_3.stl" />
         </geometry>
       </collision>
+    <inertial>
+			<origin xyz="0 0 0" rpy="0 0 0"/>
+			<mass value="5" />
+			<inertia  ixx="1" ixy="0.0" ixz="0.0"
+                iyy="1" iyz="0.0"
+                izz="1" />
+    </inertial>
     </link>
     <link name="${prefix}link_4">
       <visual>
@@ -71,6 +99,13 @@
           <mesh filename="package://kuka_lbr_iiwa_support/meshes/lbr_iiwa_14_r820/collision/link_4.stl" />
         </geometry>
       </collision>
+    <inertial>
+			<origin xyz="0 0 0" rpy="0 0 0"/>
+			<mass value="5" />
+			<inertia  ixx="1" ixy="0.0" ixz="0.0"
+                iyy="1" iyz="0.0"
+                izz="1" />
+    </inertial>
     </link>
     <link name="${prefix}link_5">
       <visual>
@@ -85,6 +120,13 @@
           <mesh filename="package://kuka_lbr_iiwa_support/meshes/lbr_iiwa_14_r820/collision/link_5.stl" />
         </geometry>
       </collision>
+    <inertial>
+			<origin xyz="0 0 0" rpy="0 0 0"/>
+			<mass value="5" />
+			<inertia  ixx="1" ixy="0.0" ixz="0.0"
+                iyy="1" iyz="0.0"
+                izz="1" />
+    </inertial>
     </link>
     <link name="${prefix}link_6">
       <visual>
@@ -99,6 +141,13 @@
           <mesh filename="package://kuka_lbr_iiwa_support/meshes/lbr_iiwa_14_r820/collision/link_6.stl" />
         </geometry>
       </collision>
+    <inertial>
+			<origin xyz="0 0 0" rpy="0 0 0"/>
+			<mass value="5" />
+			<inertia  ixx="1" ixy="0.0" ixz="0.0"
+                iyy="1" iyz="0.0"
+                izz="1" />
+    </inertial>
     </link>
     <link name="${prefix}link_7">
       <visual>
@@ -113,6 +162,13 @@
           <mesh filename="package://kuka_lbr_iiwa_support/meshes/lbr_iiwa_14_r820/collision/link_7.stl" />
         </geometry>
       </collision>
+    <inertial>
+			<origin xyz="0 0 0" rpy="0 0 0"/>
+			<mass value="1" />
+			<inertia  ixx="1" ixy="0.0" ixz="0.0"
+                iyy="1" iyz="0.0"
+                izz="1" />
+    </inertial>
     </link>
     <link name="${prefix}tool0" />
     <!-- end of link list -->
