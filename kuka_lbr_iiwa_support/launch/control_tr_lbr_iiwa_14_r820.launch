@@ -1,0 +1,28 @@
+<launch>
+
+  <!-- Load joint controller configurations from YAML file to parameter server -->
+  <rosparam file="$(find kuka_lbr_iiwa_support)/config/kuka_tr_control.yaml" 
+            command="load"/>
+
+  <!-- load the controllers -->
+  <node name="control_spawner" 
+        pkg="controller_manager" 
+        type="spawner" 
+        respawn="false"
+	      output="screen" 
+        ns="/iiwa" 
+        args="joint_state_controller 
+              tr_controller"/>
+
+  <!-- convert joint states to TF transforms for rviz, etc -->
+  <node name="robot_state_publisher" 
+        pkg="robot_state_publisher" 
+        type="robot_state_publisher"
+	      respawn="false" 
+        output="screen">
+    
+    <remap  from="/joint_states" 
+            to="/iiwa/joint_states" />
+  </node>
+
+</launch>

@@ -1,0 +1,26 @@
+iiwa:
+  # Publish all joint states -----------------------------------
+  joint_state_controller:
+    type: joint_state_controller/JointStateController
+    publish_rate: 50  
+  
+  # trajectory controllers for RIGHT ARM
+  tr_controller:
+    type: effort_controllers/JointTrajectoryController
+    joints:
+      - joint_a1
+      - joint_a2
+      - joint_a3
+      - joint_a4
+      - joint_a5
+      - joint_a6
+      - joint_a7
+
+    gains: 
+      joint_a1: {p: 1000.0, i: 50.0, d: 50.0, i_clamp: 100.0}
+      joint_a2: {p: 1000.0, i: 50.0, d: 50.0, i_clamp: 100.0}
+      joint_a3: {p: 1000.0, i: 50.0, d: 50.0, i_clamp: 100.0}
+      joint_a4: {p: 1000.0, i: 50.0, d: 50.0, i_clamp: 100.0}
+      joint_a5: {p: 1000.0, i: 50.0, d: 50.0, i_clamp: 100.0}
+      joint_a6: {p: 1000.0, i: 50.0, d: 50.0, i_clamp: 100.0}
+      joint_a7: {p: 1000.0, i: 50.0, d: 50.0, i_clamp: 100.0}
