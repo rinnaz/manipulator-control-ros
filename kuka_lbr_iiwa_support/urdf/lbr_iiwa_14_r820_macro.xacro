@@ -18,9 +18,9 @@
     <inertial>
 			<origin xyz="0 0 0" rpy="0 0 0"/>
 			<mass value="5" />
-			<inertia  ixx="1" ixy="0.0" ixz="0.0"
-                iyy="1" iyz="0.0"
-                izz="1" />
+			<inertia  ixx="0.05" ixy="0.0" ixz="0.0"
+                iyy="0.06" iyz="0.0"
+                izz="0.03" />
     </inertial>
     </link>
     <link name="${prefix}link_1">
@@ -38,10 +38,10 @@
       </collision>
     <inertial>
 			<origin xyz="0 0 0" rpy="0 0 0"/>
-			<mass value="5" />
-			<inertia  ixx="1" ixy="0.0" ixz="0.0"
-                iyy="1" iyz="0.0"
-                izz="1" />
+			<mass value="4" />
+			<inertia  ixx="0.1" ixy="0.0" ixz="0.0"
+                iyy="0.09" iyz="0.0"
+                izz="0.02" />
     </inertial>
     </link>
     <link name="${prefix}link_2">
@@ -59,10 +59,10 @@
       </collision>
     <inertial>
 			<origin xyz="0 0 0" rpy="0 0 0"/>
-			<mass value="5" />
-			<inertia  ixx="1" ixy="0.0" ixz="0.0"
-                iyy="1" iyz="0.0"
-                izz="1" />
+			<mass value="4" />
+			<inertia  ixx="0.05" ixy="0.0" ixz="0.0"
+                iyy="0.018" iyz="0.0"
+                izz="0.044" />
     </inertial>
     </link>
     <link name="${prefix}link_3">
@@ -80,10 +80,10 @@
       </collision>
     <inertial>
 			<origin xyz="0 0 0" rpy="0 0 0"/>
-			<mass value="5" />
-			<inertia  ixx="1" ixy="0.0" ixz="0.0"
-                iyy="1" iyz="0.0"
-                izz="1" />
+			<mass value="3" />
+			<inertia  ixx="0.08" ixy="0.0" ixz="0.0"
+                iyy="0.075" iyz="0.0"
+                izz="0.01" />
     </inertial>
     </link>
     <link name="${prefix}link_4">
@@ -101,10 +101,10 @@
       </collision>
     <inertial>
 			<origin xyz="0 0 0" rpy="0 0 0"/>
-			<mass value="5" />
-			<inertia  ixx="1" ixy="0.0" ixz="0.0"
-                iyy="1" iyz="0.0"
-                izz="1" />
+			<mass value="2.7" />
+			<inertia  ixx="0.03" ixy="0.0" ixz="0.0"
+                iyy="0.01" iyz="0.0"
+                izz="0.029" />
     </inertial>
     </link>
     <link name="${prefix}link_5">
@@ -122,10 +122,10 @@
       </collision>
     <inertial>
 			<origin xyz="0 0 0" rpy="0 0 0"/>
-			<mass value="5" />
-			<inertia  ixx="1" ixy="0.0" ixz="0.0"
-                iyy="1" iyz="0.0"
-                izz="1" />
+			<mass value="1.7" />
+			<inertia  ixx="0.02" ixy="0.0" ixz="0.0"
+                iyy="0.018" iyz="0.0"
+                izz="0.005" />
     </inertial>
     </link>
     <link name="${prefix}link_6">
@@ -143,10 +143,10 @@
       </collision>
     <inertial>
 			<origin xyz="0 0 0" rpy="0 0 0"/>
-			<mass value="5" />
-			<inertia  ixx="1" ixy="0.0" ixz="0.0"
-                iyy="1" iyz="0.0"
-                izz="1" />
+			<mass value="1.8" />
+			<inertia  ixx="0.005" ixy="0.0" ixz="0.0"
+                iyy="0.0036" iyz="0.0"
+                izz="0.0047" />
     </inertial>
     </link>
     <link name="${prefix}link_7">
@@ -164,10 +164,10 @@
       </collision>
     <inertial>
 			<origin xyz="0 0 0" rpy="0 0 0"/>
-			<mass value="1" />
-			<inertia  ixx="1" ixy="0.0" ixz="0.0"
-                iyy="1" iyz="0.0"
-                izz="1" />
+			<mass value="0.3" />
+			<inertia  ixx="0.001" ixy="0.0" ixz="0.0"
+                iyy="0.001" iyz="0.0"
+                izz="0.001" />
     </inertial>
     </link>
     <link name="${prefix}tool0" />
