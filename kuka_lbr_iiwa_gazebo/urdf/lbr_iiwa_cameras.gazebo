@@ -8,7 +8,7 @@
   <!-- EE cameras  -->
   <xacro:camera_gen ref="${prefix}link_7" 
                     name="ee_camera"
-                    pose="0 0 0 ${PI} ${-PI/2} ${PI/2}" 
+                    pose="0 0 0.126 ${PI} ${-PI/2} ${PI/2}" 
                     fov="86"/>
 
 </robot>
