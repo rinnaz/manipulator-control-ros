@@ -3,7 +3,7 @@
 
   <!-- ======== ARG SECTION ========= -->
 
-	<xacro:property name="reduct" value="100" />
+	<xacro:property name="reduct" value="1" />
 
 	<!-- CAMERA params -->
 
