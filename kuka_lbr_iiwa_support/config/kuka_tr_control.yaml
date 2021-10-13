@@ -1,4 +1,4 @@
-iiwa:
+kuka_lbr_iiwa_14_r820:
   # Publish all joint states -----------------------------------
   joint_state_controller:
     type: joint_state_controller/JointStateController

@@ -9,7 +9,7 @@
   <gazebo>
     <plugin name="gazebo_ros_control" 
             filename="libgazebo_ros_control.so">
-      <robotNamespace>/iiwa</robotNamespace>
+      <robotNamespace>/kuka_lbr_iiwa_14_r820</robotNamespace>
       <robotSimType>gazebo_ros_control/DefaultRobotHWSim</robotSimType>
     </plugin>
   </gazebo>

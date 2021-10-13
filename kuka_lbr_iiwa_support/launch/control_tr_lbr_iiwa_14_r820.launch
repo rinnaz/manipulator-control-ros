@@ -10,7 +10,7 @@
         type="spawner" 
         respawn="false"
 	      output="screen" 
-        ns="/iiwa" 
+        ns="/kuka_lbr_iiwa_14_r820" 
         args="joint_state_controller 
               tr_controller"/>
 
@@ -22,7 +22,7 @@
         output="screen">
     
     <remap  from="/joint_states" 
-            to="/iiwa/joint_states" />
+            to="/kuka_lbr_iiwa_14_r820/joint_states" />
   </node>
 
 </launch>

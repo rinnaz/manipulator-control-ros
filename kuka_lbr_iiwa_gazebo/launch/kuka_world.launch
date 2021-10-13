@@ -31,8 +31,9 @@
     <env name="GAZEBO_MODEL_PATH" value="$(find kuka_lbr_iiwa_gazebo)/sdf" />
   </include>
 
-  <param  name="robot_description"
-          command="$(find xacro)/xacro '$(find kuka_lbr_iiwa_gazebo)/urdf/$(arg model)'" />
+  <param  name="/robot_description"
+          command="$(find xacro)/xacro '$(find kuka_lbr_iiwa_gazebo)/urdf/$(arg model)'" 
+          />
 
   <node name="spawn_urdf" 
         pkg="gazebo_ros" 
