@@ -1,0 +1,9 @@
+<launch>
+  <!-- SPAWN MODEL TO GAZEBO -->
+  <include  file="$(find kuka_lbr_iiwa_gazebo)/launch/kuka_world.launch" />
+
+  <!-- CONTROL SECTION -->
+  <include file="$(find kuka_lbr_iiwa_support)/launch/control_tr_lbr_iiwa_14_r820.launch" />
+
+</launch>
+
