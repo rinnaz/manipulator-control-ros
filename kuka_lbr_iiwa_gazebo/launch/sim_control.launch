@@ -5,5 +5,8 @@
   <!-- CONTROL SECTION -->
   <include file="$(find kuka_lbr_iiwa_support)/launch/control_tr_lbr_iiwa_14_r820.launch" />
 
+    <!-- CONTROL SECTION -->
+  <include file="$(find kuka_lbr_iiwa_control)/launch/set_default_pose_t.launch" />
+
 </launch>
 
