@@ -24,7 +24,7 @@
   <xacro:macro name="camera_gen" params="ref name pose fov">
     <gazebo reference="${ref}">
       <sensor type="camera" name="${name}_sen">
-        <update_rate>25.0</update_rate>
+        <update_rate>60.0</update_rate>
         <camera name="${name}">
           <pose>${pose}</pose>
           <horizontal_fov>${fov*PI/180}</horizontal_fov>
