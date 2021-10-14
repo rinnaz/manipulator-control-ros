@@ -1,0 +1,10 @@
+<launch>
+
+  <node name="pose_controller" 
+        pkg="kuka_lbr_iiwa_control" 
+        type="set_default_pose.py" 
+        respawn="false" 
+        output="screen">
+  </node>
+
+</launch>
