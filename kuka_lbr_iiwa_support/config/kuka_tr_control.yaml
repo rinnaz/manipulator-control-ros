@@ -17,10 +17,10 @@ kuka_lbr_iiwa_14_r820:
       - joint_a7
 
     gains: 
-      joint_a1: {p: 100.0, i: 0.1, d: 1.0}
-      joint_a2: {p: 100.0, i: 0.1, d: 1.0}
-      joint_a3: {p: 100.0, i: 0.1, d: 1.0}
-      joint_a4: {p: 100.0, i: 0.1, d: 1.0}
-      joint_a5: {p: 100.0, i: 0.1, d: 1.0}
-      joint_a6: {p: 100.0, i: 0.1, d: 1.0}
-      joint_a7: {p: 100.0, i: 0.1, d: 1.0}
+      joint_a1: {p: 500.0, i: 1.0, d: 10.0}
+      joint_a2: {p: 500.0, i: 1.0, d: 10.0}
+      joint_a3: {p: 500.0, i: 1.0, d: 10.0}
+      joint_a4: {p: 500.0, i: 1.0, d: 10.0}
+      joint_a5: {p: 500.0, i: 1.0, d: 10.0}
+      joint_a6: {p: 100.0, i: 1.0, d: 1.0}
+      joint_a7: {p: 100.0, i: 1.0, d: 1.0}
