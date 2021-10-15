@@ -100,24 +100,28 @@ void MarkerDetector::callback(const sensor_msgs::Image::ConstPtr &img) const
                                          m_cameraMatrix, m_distCoeffs, 
                                          rvecs, tvecs);
 
-    // draw axis for each marker
+    // Draw axis for each marker
     for (auto i { 0 }; i < markerIds.size(); i++)
     {
         cv::aruco::drawAxis(imageCopy, m_cameraMatrix, m_distCoeffs, 
                             rvecs[i], tvecs[i], 0.05);
     }
 
-    marker_point.x = tvecs[0][0];
-    marker_point.y = tvecs[0][1];
-    marker_point.z = tvecs[0][2];
+    // Take first marker
+    if (!markerIds.empty())
+    {
+        marker_point.x = tvecs[0][0];
+        marker_point.y = tvecs[0][1];
+        marker_point.z = tvecs[0][2];
 
-    cv::Rodrigues(rvecs[0], rotationMatrix);
+        cv::Rodrigues(rvecs[0], rotationMatrix);
 
-    marker_pose.position = marker_point;
-    marker_pose.orientation = rotMatToQuat(rotationMatrix);
+        marker_pose.position = marker_point;
+        marker_pose.orientation = rotMatToQuat(rotationMatrix);
 
-    m_pub_pose.publish(marker_pose);
-    
+        m_pub_pose.publish(marker_pose);
+    }
+
     cv_ptr->image = imageCopy;
     (*cv_ptr).toImageMsg(image_msg);
     m_pub_image.publish(image_msg);
