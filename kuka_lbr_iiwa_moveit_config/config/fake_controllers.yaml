@@ -1,0 +1,14 @@
+controller_list:
+  - name: fake_iiwa_arm_controller
+    type: $(arg execution_type)
+    joints:
+      - joint_a1
+      - joint_a2
+      - joint_a3
+      - joint_a4
+      - joint_a5
+      - joint_a6
+      - joint_a7
+initial:  # Define initial robot poses.
+  - group: iiwa_arm
+    pose: default
