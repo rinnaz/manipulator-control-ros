@@ -1,0 +1,12 @@
+controller_list:
+    - name: kuka_lbr_iiwa_14_r820/tr_controller
+      action_ns: follow_joint_trajectory
+      type: FollowJointTrajectory
+      joints:
+        - joint_a1
+        - joint_a2
+        - joint_a3
+        - joint_a4
+        - joint_a5
+        - joint_a6
+        - joint_a7
