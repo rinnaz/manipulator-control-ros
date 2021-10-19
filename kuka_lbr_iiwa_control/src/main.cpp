@@ -11,9 +11,22 @@ int main(int argc, char **argv)
 
   IiwaController controller;
 
-  controller.printCurrentJointState();
+  // std::vector<double> goal {1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0};
 
-  ros::shutdown();
+  // controller.setJointStates(goal);
+  // controller.printCurrentJointState();
+
+  // controller.setDefaultPose();
+
+  while(ros::ok())
+  {
+    controller.updateKinematicState();
+    controller.printCurrentJointState();
+    ros::Duration(1.0).sleep();
+  }
+  // spinner.start();
+  // ros::waitForShutdown();
+  // ros::spin();
   return 0;
 }
  
