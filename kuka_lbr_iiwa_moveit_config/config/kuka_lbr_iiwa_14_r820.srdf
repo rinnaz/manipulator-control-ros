@@ -28,6 +28,17 @@
         <joint name="joint_a6" value="0"/>
         <joint name="joint_a7" value="0"/>
     </group_state>
+
+    <group_state name="aim_marker" group="iiwa_arm">
+        <joint name="joint_a1" value="0"/>
+        <joint name="joint_a2" value="-0.8"/>
+        <joint name="joint_a3" value="0"/>
+        <joint name="joint_a4" value="0.8"/>
+        <joint name="joint_a5" value="0"/>
+        <joint name="joint_a6" value="0"/>
+        <joint name="joint_a7" value="0"/>
+    </group_state>
+
     <!--END EFFECTOR: Purpose: Represent information about an end effector.-->
     <end_effector name="iiwa_ee" parent_link="tool0" group="iiwa_arm"/>
     <!--DISABLE COLLISIONS: By default it is assumed that any link of the robot could potentially come into collision with any other link in the robot. This tag disables collision checking between a specified pair of links. -->
