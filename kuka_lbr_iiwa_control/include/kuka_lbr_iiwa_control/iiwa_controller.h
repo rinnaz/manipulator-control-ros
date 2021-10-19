@@ -28,6 +28,7 @@ public:
     void updateKinematicState();
 
     void callbackJointStates(const sensor_msgs::JointState &pose);
+    void updateEePose();
 
 private:
     std::mutex m_mutex;
@@ -44,4 +45,5 @@ private:
 
     std::vector<double> m_joint_values_current;
     std::vector<double> m_joint_values_target;
+    Eigen::Isometry3d m_end_effector_state;
 };

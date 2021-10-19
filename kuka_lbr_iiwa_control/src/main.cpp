@@ -22,11 +22,11 @@ int main(int argc, char **argv)
   {
     controller.updateKinematicState();
     controller.printCurrentJointState();
+    controller.updateEePose();
     ros::Duration(1.0).sleep();
   }
-  // spinner.start();
-  // ros::waitForShutdown();
-  // ros::spin();
+
+  ros::waitForShutdown();
   return 0;
 }
  

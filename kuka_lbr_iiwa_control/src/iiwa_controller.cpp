@@ -15,6 +15,8 @@ IiwaController::IiwaController()
                            10 , 
                            &IiwaController::callbackJointStates, 
                            this);
+
+    updateKinematicState();
 }
 
 IiwaController::~IiwaController() {}
@@ -47,6 +49,11 @@ void IiwaController::updateKinematicState()
     const std::lock_guard<std::mutex> lock(m_mutex);
     m_kinematic_state->setJointGroupPositions(m_joint_model_group, 
                                               m_joint_values_current);
+
+    if(m_kinematic_state->satisfiesBounds())
+    {
+        updateEePose();
+    }
     ROS_INFO_STREAM("Current state is " << (m_kinematic_state->satisfiesBounds() ? "valid" : "not valid"));
 }
 
@@ -61,4 +68,15 @@ void IiwaController::callbackJointStates(const sensor_msgs::JointState &pose)
 {
     const std::lock_guard<std::mutex> lock(m_mutex);
     setJointStates(pose.position);
+}
+
+void IiwaController::updateEePose()
+{
+  auto end_effector_state = m_kinematic_state->getGlobalLinkTransform("tool0");
+
+  m_end_effector_state = end_effector_state;
+
+  /* Print end-effector pose. Remember that this is in the model frame */
+  ROS_INFO_STREAM("Translation: \n" << m_end_effector_state.translation() << "\n");
+  ROS_INFO_STREAM("Rotation: \n" << m_end_effector_state.rotation() << "\n");
 }
