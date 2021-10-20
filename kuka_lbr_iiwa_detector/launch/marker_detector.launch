@@ -1,0 +1,10 @@
+<launch>
+
+  <node name="marker_detector" 
+        pkg="kuka_lbr_iiwa_detector" 
+        type="kuka_lbr_iiwa_detector" 
+        respawn="false" 
+        output="screen" >
+  </node>
+
+</launch> 
