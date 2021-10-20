@@ -1,0 +1,9 @@
+<launch>
+  <!-- START SIMULATION -->
+  <include  file="$(find kuka_lbr_iiwa_gazebo)/launch/sim_control.launch" />
+
+  <!-- START CV MARKER DETECTION -->
+  <include file="$(find kuka_lbr_detector)/launch/marker_detector.launch" />
+
+</launch>
+
