@@ -1,54 +1,54 @@
 #include "kuka_lbr_iiwa_detector/kuka_lbr_iiwa_detector.h"
 
 MarkerDetector::MarkerDetector()
-: m_cameraParamsFile { "/config/head_camera.yaml" },
-  m_detectorParamsFile { "/config/detector_parameters.yaml" },
-  m_package_path { ros::package::getPath("kuka_lbr_iiwa_detector") },
-  m_cameraTopicName { "/lbr_iiwa_14_r820/ee_camera/image_raw" },
-  m_imageTopicName { "/lbr_iiwa_14_r820/ee_camera/image_with_markers" },
-  m_markersTopicName { "/detected_markers" },
-  m_dict { cv::aruco::getPredefinedDictionary(cv::aruco::DICT_6X6_100) }
+    : m_cameraParamsFile{"/config/head_camera.yaml"},
+      m_detectorParamsFile{"/config/detector_parameters.yaml"},
+      m_package_path{ros::package::getPath("kuka_lbr_iiwa_detector")},
+      m_cameraTopicName{"/lbr_iiwa_14_r820/ee_camera/image_raw"},
+      m_imageTopicName{"/lbr_iiwa_14_r820/ee_camera/image_with_markers"},
+      m_markersTopicName{"/detected_markers"},
+      m_dict{cv::aruco::getPredefinedDictionary(cv::aruco::DICT_6X6_100)}
 {
     //Topics to publish
     m_pub_pose = m_nh.advertise<geometry_msgs::Pose>(m_markersTopicName, 1);
     m_pub_image = m_nh.advertise<sensor_msgs::Image>(m_imageTopicName, 1);
 
     //Topic to subscribe
-    readDetectorParams(m_package_path + m_detectorParamsFile);
-    readCameraParams(m_package_path + m_cameraParamsFile);
+    readDetectorParams();
+    readCameraParams();
 
     m_sub = m_nh.subscribe(m_cameraTopicName, 1, &MarkerDetector::callback, this);
 }
 
 MarkerDetector::~MarkerDetector() {}
 
-void MarkerDetector::readCameraParams(const std::string &filename)
+void MarkerDetector::readCameraParams()
 {
-    cv::FileStorage fs(filename, cv::FileStorage::READ);
+    cv::FileStorage fs(m_package_path + m_cameraParamsFile, cv::FileStorage::READ);
     fs["camera_matrix"] >> m_cameraMatrix;
     fs["distortion_coefficients"] >> m_distCoeffs;
 }
 
-void MarkerDetector::readDetectorParams(const std::string &filename)
+void MarkerDetector::readDetectorParams()
 {
     m_detectorParams = cv::aruco::DetectorParameters::create();
-    cv::FileStorage fs(filename, cv::FileStorage::READ);
+    cv::FileStorage fs(m_package_path + m_detectorParamsFile, cv::FileStorage::READ);
     fs["adaptiveThreshWinSizeMin"] >> m_detectorParams->adaptiveThreshWinSizeMin;
     fs["adaptiveThreshWinSizeMax"] >> m_detectorParams->adaptiveThreshWinSizeMax;
     fs["adaptiveThreshWinSizeStep"] >> m_detectorParams->adaptiveThreshWinSizeStep;
-    fs["adaptiveThreshConstant"] >> m_detectorParams->adaptiveThreshConstant;    
+    fs["adaptiveThreshConstant"] >> m_detectorParams->adaptiveThreshConstant;
     fs["minMarkerPerimeterRate"] >> m_detectorParams->minMarkerPerimeterRate;
     fs["maxMarkerPerimeterRate"] >> m_detectorParams->maxMarkerPerimeterRate;
     fs["polygonalApproxAccuracyRate"] >> m_detectorParams->polygonalApproxAccuracyRate;
     fs["minCornerDistanceRate"] >> m_detectorParams->minCornerDistanceRate;
     fs["minDistanceToBorder"] >> m_detectorParams->minDistanceToBorder;
-    fs["minMarkerDistanceRate"] >> m_detectorParams->minMarkerDistanceRate;    
+    fs["minMarkerDistanceRate"] >> m_detectorParams->minMarkerDistanceRate;
     fs["cornerRefinementWinSize"] >> m_detectorParams->cornerRefinementWinSize;
     fs["cornerRefinementMaxIterations"] >> m_detectorParams->cornerRefinementMaxIterations;
     fs["cornerRefinementMinAccuracy"] >> m_detectorParams->cornerRefinementMinAccuracy;
     fs["markerBorderBits"] >> m_detectorParams->markerBorderBits;
 
-    fs["perspectiveRemovePixelPerCell"] >> m_detectorParams->perspectiveRemovePixelPerCell;    
+    fs["perspectiveRemovePixelPerCell"] >> m_detectorParams->perspectiveRemovePixelPerCell;
     fs["perspectiveRemoveIgnoredMarginPerCell"] >> m_detectorParams->perspectiveRemoveIgnoredMarginPerCell;
     fs["maxErroneousBitsInBorderRate"] >> m_detectorParams->maxErroneousBitsInBorderRate;
     fs["minOtsuStdDev"] >> m_detectorParams->minOtsuStdDev;
@@ -69,8 +69,57 @@ geometry_msgs::Quaternion MarkerDetector::rotMatToQuat(const cv::Mat &rot) const
     return pose_msg.orientation;
 }
 
-void MarkerDetector::callback(const sensor_msgs::Image::ConstPtr &img) const
+geometry_msgs::TransformStamped
+MarkerDetector::makeCameraTransformMsg() const
 {
+    geometry_msgs::TransformStamped result;
+    geometry_msgs::Pose pose;
+    tf2::Quaternion q_rot;
+    q_rot.setRPY(0.0, 0.0, M_PI_2);
+
+    tf2::convert(q_rot, pose.orientation);
+
+    // q_new = q_rot*q_orig;
+    // q_new.normalize();
+    
+    // tf2::convert(q_new, pose.orientation);
+
+    result.header.stamp = ros::Time::now();
+    result.header.frame_id = "tool0";
+    result.child_frame_id = "camera";
+    result.transform.translation.x = 0.0;
+    result.transform.translation.y = 0.0;
+    result.transform.translation.z = 0.0;
+    result.transform.rotation.x = pose.orientation.x;
+    result.transform.rotation.y = pose.orientation.y;
+    result.transform.rotation.z = pose.orientation.z;
+    result.transform.rotation.w = pose.orientation.w;
+    return result;
+}
+
+geometry_msgs::TransformStamped
+MarkerDetector::makeTransformMsg(geometry_msgs::Pose& pose) const
+{
+    geometry_msgs::TransformStamped result;
+
+    result.header.stamp = ros::Time::now();
+    result.header.frame_id = "camera";
+    result.child_frame_id = "marker";
+    result.transform.translation.x = pose.position.x;
+    result.transform.translation.y = pose.position.y;
+    result.transform.translation.z = pose.position.z;
+    result.transform.rotation.x = pose.orientation.x;
+    result.transform.rotation.y = pose.orientation.y;
+    result.transform.rotation.z = pose.orientation.z;
+    result.transform.rotation.w = pose.orientation.w;
+
+    return result;
+}
+
+void MarkerDetector::callback(const sensor_msgs::Image::ConstPtr& img) const
+{
+    static tf2_ros::TransformBroadcaster tf_broadcaster;
+    
     geometry_msgs::Pose marker_pose;
     geometry_msgs::Point marker_point;
     geometry_msgs::Quaternion marker_quat;
@@ -83,29 +132,31 @@ void MarkerDetector::callback(const sensor_msgs::Image::ConstPtr &img) const
 
     cv::Mat imageCopy;
     (cv_ptr->image).copyTo(imageCopy);
-  
+
     std::vector<int> markerIds;
     std::vector<std::vector<cv::Point2f>> markerCorners;
 
-    cv::aruco::detectMarkers(imageCopy, 
-                              m_dict, 
-                              markerCorners, 
-                              markerIds, 
-                              m_detectorParams);
+    cv::aruco::detectMarkers(imageCopy,
+                             m_dict,
+                             markerCorners,
+                             markerIds,
+                             m_detectorParams);
 
     cv::aruco::drawDetectedMarkers(imageCopy, markerCorners, markerIds);
     std::vector<cv::Vec3d> rvecs, tvecs;
 
-    cv::aruco::estimatePoseSingleMarkers(markerCorners, 0.06, 
-                                         m_cameraMatrix, m_distCoeffs, 
+    cv::aruco::estimatePoseSingleMarkers(markerCorners, 0.06,
+                                         m_cameraMatrix, m_distCoeffs,
                                          rvecs, tvecs);
 
     // Draw axis for each marker
-    for (auto i { 0 }; i < markerIds.size(); i++)
+    for (auto i{0}; i < markerIds.size(); i++)
     {
-        cv::aruco::drawAxis(imageCopy, m_cameraMatrix, m_distCoeffs, 
+        cv::aruco::drawAxis(imageCopy, m_cameraMatrix, m_distCoeffs,
                             rvecs[i], tvecs[i], 0.05);
     }
+
+    tf_broadcaster.sendTransform(makeCameraTransformMsg());
 
     // Take first marker
     if (!markerIds.empty())
@@ -120,10 +171,11 @@ void MarkerDetector::callback(const sensor_msgs::Image::ConstPtr &img) const
         marker_pose.orientation = rotMatToQuat(rotationMatrix);
 
         m_pub_pose.publish(marker_pose);
+
+        tf_broadcaster.sendTransform(makeTransformMsg(marker_pose));
     }
 
     cv_ptr->image = imageCopy;
     (*cv_ptr).toImageMsg(image_msg);
     m_pub_image.publish(image_msg);
-} 
-
+}
