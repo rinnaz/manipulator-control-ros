@@ -1,0 +1,3 @@
+<launch>
+  <node name="rviz" pkg="rviz" type="rviz" args="-d $(find kuka_lbr_iiwa_support)/config/config.rviz" required="true" />
+</launch>
