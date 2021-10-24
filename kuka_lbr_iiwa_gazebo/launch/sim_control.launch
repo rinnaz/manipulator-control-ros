@@ -3,10 +3,8 @@
   <include  file="$(find kuka_lbr_iiwa_gazebo)/launch/kuka_world.launch" />
 
   <!-- START CONTROLLERS -->
-  <include file="$(find kuka_lbr_iiwa_support)/launch/control_tr_lbr_iiwa_14_r820.launch" />
-
-  <!-- GO TO START POSE -->
-  <include file="$(find kuka_lbr_iiwa_control)/launch/set_default_pose_t.launch" />
+  <!-- <include file="$(find kuka_lbr_iiwa_support)/launch/control_tr_lbr_iiwa_14_r820.launch" /> -->
+  <include file="$(find kuka_lbr_iiwa_support)/launch/control_trg_lbr_iiwa_14_r820.launch" />
 
 </launch>
 

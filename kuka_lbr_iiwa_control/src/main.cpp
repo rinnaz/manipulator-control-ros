@@ -10,6 +10,7 @@ int main(int argc, char **argv)
   ROS_WARN("iiwa_controller process started");
 
   IiwaController controller;
+  controller.setGravityMode(true);
 
   // std::vector<double> goal {1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0};
 
@@ -21,9 +22,10 @@ int main(int argc, char **argv)
   while(ros::ok())
   {
     controller.updateKinematicState();
-    controller.printCurrentJointState();
+    // controller.printCurrentJointState();
     controller.updateEePose();
-    ros::Duration(1.0).sleep();
+    // ros::Duration(0.1).sleep();
+
   }
 
   ros::waitForShutdown();

@@ -2,8 +2,17 @@
   <!-- START SIMULATION -->
   <include  file="$(find kuka_lbr_iiwa_gazebo)/launch/sim_control.launch" />
 
+    <!-- START CV MARKER DETECTION -->
+  <include file="$(find kuka_lbr_iiwa_moveit_config)/launch/planning_context.launch" />
+  
+  <!-- START GRAVITY CONTROLLER -->
+  <include  file="$(find kuka_lbr_iiwa_control)/launch/gravity_controller.launch" />
+
   <!-- START CV MARKER DETECTION -->
   <include file="$(find kuka_lbr_iiwa_detector)/launch/marker_detector.launch" />
+
+  <!-- GO TO START POSE -->
+  <include file="$(find kuka_lbr_iiwa_control)/launch/set_default_pose_t.launch" />
 
 </launch>
 

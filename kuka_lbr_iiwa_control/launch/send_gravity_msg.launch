@@ -1,0 +1,10 @@
+<launch>
+
+  <node name="gravity_msg_publisher" 
+        pkg="kuka_lbr_iiwa_control" 
+        type="send_gravity_msg.py" 
+        respawn="false" 
+        output="screen">
+  </node>
+
+</launch>

@@ -1,0 +1,10 @@
+<launch>
+
+  <node name="gravity_controller" 
+        pkg="kuka_lbr_iiwa_control" 
+        type="iiwa_controller_node" 
+        respawn="false" 
+        output="screen" >
+  </node>
+
+</launch> 
