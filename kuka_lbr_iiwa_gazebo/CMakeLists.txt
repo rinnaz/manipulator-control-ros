@@ -29,7 +29,7 @@ include_directories(
   ${catkin_INCLUDE_DIRS}
 )
 
-foreach(dir launch meshes meshes-testing sdf sdf-testing urdf worlds)
+foreach(dir launch sdf urdf worlds)
     install(DIRECTORY ${dir}/ 
       DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}/${dir}
     )
