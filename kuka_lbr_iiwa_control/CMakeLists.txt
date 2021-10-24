@@ -1,6 +1,8 @@
 cmake_minimum_required(VERSION 3.0.2)
 project(kuka_lbr_iiwa_control)
 
+add_compile_options(-std=c++17)
+
 find_package(catkin REQUIRED COMPONENTS
   rospy
   std_msgs
@@ -8,6 +10,8 @@ find_package(catkin REQUIRED COMPONENTS
   trajectory_msgs
   moveit_core
   moveit_ros_planning_interface
+  rnrt_msgs
+  geometry_msgs
 )
 
 catkin_package(
