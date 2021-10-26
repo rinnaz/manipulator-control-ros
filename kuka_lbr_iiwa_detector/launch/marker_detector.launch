@@ -1,10 +1,13 @@
 <launch>
-
-  <node name="marker_detector" 
-        pkg="kuka_lbr_iiwa_detector" 
-        type="kuka_lbr_iiwa_detector" 
-        respawn="false" 
-        output="screen" >
-  </node>
-
+  <include file="$(find rnrt_aruco_detector)/launch/marker_detector.launch">
+    <arg name="package_path" value="$(find kuka_lbr_iiwa_detector)" />
+    <arg name="camera_parameters_file" value="/config/head_camera.yaml" />
+    <arg name="detector_parameters_file" value="/config/detector_parameters.yaml" />
+    <arg name="source_camera_topic" value="/lbr_iiwa_14_r820/ee_camera/image_raw" />
+    <arg name="output_image_topic" value="/lbr_iiwa_14_r820/ee_camera/image_with_markers" />
+    <arg name="marker_pose_topic" value="/detected_markers" />
+    <arg name="tf_parent_frame" value="world" />
+    <arg name="tf_child_frame_prefix" value="marker_" />
+    <arg name="aruco_dict_type" value="DICT_6X6_100" />
+  </include>
 </launch> 

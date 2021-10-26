@@ -2,20 +2,10 @@ cmake_minimum_required(VERSION 3.0.2)
 project(kuka_lbr_iiwa_detector)
 
 find_package(catkin REQUIRED COMPONENTS
-  cv_bridge
-  image_transport
-  roscpp
-  sensor_msgs
-  std_msgs
-  message_generation
-  geometry_msgs
-  tf2
-  tf2_geometry_msgs
+  rnrt_aruco_detector
 )
 
 ## System dependencies are found with CMake's conventions
-find_package(OpenCV REQUIRED)
-find_package(Eigen3 REQUIRED)
 
 catkin_package(
 #  INCLUDE_DIRS include
@@ -25,22 +15,11 @@ catkin_package(
 )
 
 
-include_directories(include
-  ${catkin_INCLUDE_DIRS}
-  ${OpenCV_INCLUDE_DIRS}
-  ${rrt_cv_gibrid_INCLUDE_DIRS} ##gibrid
+include_directories(
+#   include
+#   ${catkin_INCLUDE_DIRS}
+#   ${OpenCV_INCLUDE_DIRS}
 )
-
-
-add_executable(kuka_lbr_iiwa_detector src/main.cpp src/kuka_lbr_iiwa_detector.cpp)
-
-
-## Specify libraries to link a library or executable target against
- target_link_libraries(kuka_lbr_iiwa_detector
-  ${OpenCV_LIBRARIES} 
-  ${catkin_LIBRARIES}
-  ${rrt_cv_gibrid_LIBRARIES} ##gibrid
- )
 
 
 

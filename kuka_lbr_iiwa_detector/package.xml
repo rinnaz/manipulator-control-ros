@@ -29,20 +29,7 @@
 
 
   <buildtool_depend>catkin</buildtool_depend>
-
-  <depend>cv_bridge</depend>
-  <depend>image_transport</depend>
-  <depend>roscpp</depend>
-  <depend>sensor_msgs</depend>
-  <depend>std_msgs</depend>
-  <depend>opencv2</depend>
-  <depend>geometry_msgs</depend>
-  <depend>tf2</depend>
-  <depend>tf2_geometry_msgs</depend>
-
-  <build_depend>message_generation</build_depend>
-  <build_export_depend>message_generation</build_export_depend>
-  <exec_depend>message_runtime</exec_depend>
+  <depend>rnrt_aruco_detector</depend>
 
   <!-- The export tag contains other, unspecified, tags -->
   <export>
