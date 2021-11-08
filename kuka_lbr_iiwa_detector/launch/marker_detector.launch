@@ -6,7 +6,7 @@
     <arg name="source_camera_topic" value="/lbr_iiwa_14_r820/ee_camera/image_raw" />
     <arg name="output_image_topic" value="/lbr_iiwa_14_r820/ee_camera/image_with_markers" />
     <arg name="marker_pose_topic" value="/detected_markers" />
-    <arg name="tf_parent_frame" value="world" />
+    <arg name="tf_parent_frame" value="camera_link" />
     <arg name="tf_child_frame_prefix" value="marker_" />
     <arg name="aruco_dict_type" value="DICT_6X6_100" />
   </include>
