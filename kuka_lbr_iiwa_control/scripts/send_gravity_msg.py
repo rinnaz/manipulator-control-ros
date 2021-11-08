@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 import time
 import rospy 
-from rnrt_msgs.msg import JointGravity
+from rnrt_msgs.msg import JointEffortFeedForward
 import numpy as np
 import math as m
 from rosgraph_msgs.msg import Clock
@@ -9,17 +9,17 @@ from rosgraph_msgs.msg import Clock
 
 def talker(qlist):
     rospy.init_node("pose_controller", anonymous=True)
-    pub = rospy.Publisher("/kuka_lbr_iiwa_14_r820/tr_controller/gravity_input", 
-                          JointGravity, 
+    pub = rospy.Publisher("/kuka_lbr_iiwa_14_r820/tr_controller/effort_feed_forward", 
+                          JointEffortFeedForward, 
                           queue_size=1)
 
-    msg = JointGravity()
+    msg = JointEffortFeedForward()
     msg.header.stamp = rospy.Time.now()
     msg.header.frame_id = ""
 
     msg.name = ['joint_a' + str(x) for x in range(1, 8)]
     
-    msg.gravity_torque = qlist
+    msg.effort_feed_forward = qlist
     
     time.sleep(0.5)
 

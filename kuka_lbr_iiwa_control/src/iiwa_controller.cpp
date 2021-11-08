@@ -20,7 +20,7 @@ IiwaController::IiwaController()
                            &IiwaController::callbackJointStates, 
                            this);
 
-    m_pub_gravity = m_nh.advertise<rnrt_msgs::JointGravity>("/kuka_lbr_iiwa_14_r820/tr_controller/gravity_input", 1);
+    m_pub_gravity = m_nh.advertise<rnrt_msgs::JointEffortFeedForward>("/kuka_lbr_iiwa_14_r820/tr_controller/effort_feed_forward", 1);
 
     geometry_msgs::Wrench temp_wrench;
     geometry_msgs::Vector3 temp_v3;
@@ -94,7 +94,7 @@ void IiwaController::callbackJointStates(const sensor_msgs::JointState &pose)
     setJointStates(pose.position);
 
     if (isInGravitymode){
-        rnrt_msgs::JointGravity msg;
+        rnrt_msgs::JointEffortFeedForward msg;
         msg.header.stamp = ros::Time::now();
         msg.header.frame_id = "base_link";
         msg.name = m_joint_names;
@@ -105,7 +105,7 @@ void IiwaController::callbackJointStates(const sensor_msgs::JointState &pose)
                                      m_wrenches,
                                      m_torques);
 
-        msg.gravity_torque = m_torques;
+        msg.effort_feed_forward = m_torques;
 
         m_pub_gravity.publish(msg);
     }

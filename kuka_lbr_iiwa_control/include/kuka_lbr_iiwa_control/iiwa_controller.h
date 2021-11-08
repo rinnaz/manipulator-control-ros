@@ -13,7 +13,7 @@
 #include <sensor_msgs/JointState.h>
 #include <geometry_msgs/Vector3.h>
 #include <geometry_msgs/Wrench.h>
-#include "rnrt_msgs/JointGravity.h"
+#include "rnrt_msgs/JointEffortFeedForward.h"
 
 #include <string>
 #include <utility>

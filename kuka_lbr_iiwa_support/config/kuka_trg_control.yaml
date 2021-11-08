@@ -6,7 +6,7 @@ kuka_lbr_iiwa_14_r820:
   
   # trajectory controllers for RIGHT ARM
   tr_controller:
-    type: effort_controllers/JointTrajectoryControllerGravityCompensated
+    type: effort_controllers/JointTrajectoryControllerEffortFF
     joints:
       - joint_a1
       - joint_a2
