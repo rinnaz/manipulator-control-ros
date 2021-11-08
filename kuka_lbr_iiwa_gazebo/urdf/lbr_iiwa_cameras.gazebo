@@ -6,9 +6,9 @@
 <!-- ==================================================== -->
   
   <!-- EE cameras  -->
-  <xacro:camera_gen ref="${prefix}link_7" 
+  <xacro:camera_gen ref="camera_link" 
                     name="ee_camera"
-                    pose="0 0 0.126 ${PI} ${-PI/2} 0" 
+                    pose="0 0 0 ${PI/2} ${-PI/2} 0" 
                     fov="86"/>
 
 </robot>

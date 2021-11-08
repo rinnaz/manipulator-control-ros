@@ -70,6 +70,7 @@
     </xacro:link_gen>
 
     <link name="tool0" />
+    <link name="camera_link" />
     <!-- end of link list -->
 
     <!-- joint list -->
@@ -126,6 +127,12 @@
       <origin xyz="0 0 0.126" rpy="0 0 0" />
       <parent link="link_7" />
       <child link="tool0" />
+      <axis xyz="0 0 0" />
+    </joint>
+    <joint name="joint_tool0_camera" type="fixed">
+      <origin xyz="0 0 0" rpy="0 0 1.570795" />
+      <parent link="tool0" />
+      <child link="camera_link" />
       <axis xyz="0 0 0" />
     </joint>
     <!-- end of joint list -->
