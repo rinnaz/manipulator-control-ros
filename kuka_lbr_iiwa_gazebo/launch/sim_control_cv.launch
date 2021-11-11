@@ -6,7 +6,8 @@
   <include file="$(find kuka_lbr_iiwa_moveit_config)/launch/planning_context.launch" />
   
   <!-- START GRAVITY CONTROLLER -->
-  <include  file="$(find kuka_lbr_iiwa_control)/launch/gravity_controller.launch" />
+  <!-- <include  file="$(find kuka_lbr_iiwa_control)/launch/gravity_controller.launch" /> -->
+  <include  file="$(find kuka_lbr_iiwa_control)/launch/effort_ff_controller.launch" />
 
   <!-- START CV MARKER DETECTION -->
   <include file="$(find kuka_lbr_iiwa_detector)/launch/marker_detector.launch" />

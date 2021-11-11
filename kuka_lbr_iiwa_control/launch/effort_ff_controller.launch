@@ -1,0 +1,10 @@
+<launch>
+  <include file="$(find rnrt_robot_controllers)/launch/effort_ff_controller.launch">
+    <arg name="robot_description" default="/robot_description" />
+    <arg name="planning_group_name" default="iiwa_arm" />
+    <arg name="joint_states_topic" default="/kuka_lbr_iiwa_14_r820/joint_states" />
+    <arg name="effort_ff_topic" default="/kuka_lbr_iiwa_14_r820/tr_controller/effort_feed_forward" />
+    <arg name="base_frame_id" default="base_link" />
+    <arg name="gravity_vector" default="[0.0, 0.0, -9.8]" />
+  </include>
+</launch> 
