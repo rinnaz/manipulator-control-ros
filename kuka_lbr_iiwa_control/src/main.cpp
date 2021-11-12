@@ -10,8 +10,6 @@ int main(int argc, char **argv)
   ROS_WARN("iiwa_controller process started");
 
   IiwaController controller;
-  controller.setGravityMode(true);
-
   // std::vector<double> goal {1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0};
 
   // controller.setJointStates(goal);
