@@ -36,3 +36,5 @@ target_link_libraries(iiwa_controller_node
   iiwa_controller
   ${catkin_LIBRARIES}
 )
+
+add_dependencies(iiwa_controller rnrt_msgs_generate_messages_cpp)
