@@ -7,10 +7,10 @@
 
 <!-- ros_control plugin -->
   <gazebo>
-    <plugin name="gazebo_ros_control" 
-            filename="libgazebo_ros_control.so">
+    <plugin name="rnrt_gazebo_ros_control" 
+            filename="librnrt_gazebo_ros_control.so">
       <robotNamespace>/kuka_lbr_iiwa_14_r820</robotNamespace>
-      <robotSimType>gazebo_ros_control/DefaultRobotHWSim</robotSimType>
+      <robotSimType>gazebo_ros_control/ServoRobotHWSim</robotSimType>
     </plugin>
   </gazebo>
 </robot>
