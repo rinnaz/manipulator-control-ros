@@ -1,0 +1,47 @@
+kuka_lbr_iiwa_14_r820:
+  servo_drive:
+    type: pm_motor
+    joints:
+      - joint_a1
+      - joint_a2
+      - joint_a3
+      - joint_a4
+      - joint_a5
+      - joint_a6
+      - joint_a7
+    
+    inverter:
+      joint_a1: {umax: 48.0}
+      joint_a2: {umax: 48.0}
+      joint_a3: {umax: 48.0}
+      joint_a4: {umax: 48.0}
+      joint_a5: {umax: 48.0}
+      joint_a6: {umax: 48.0}
+      joint_a7: {umax: 48.0}
+    
+    motor_parameters: 
+      joint_a1: {r: 0.8, l: 0.001, km: 0.5}
+      joint_a2: {r: 0.8, l: 0.001, km: 0.5}
+      joint_a3: {r: 0.8, l: 0.001, km: 0.5}
+      joint_a4: {r: 0.8, l: 0.001, km: 0.5}
+      joint_a5: {r: 0.8, l: 0.001, km: 0.5}
+      joint_a6: {r: 0.8, l: 0.001, km: 0.5}
+      joint_a7: {r: 0.8, l: 0.001, km: 0.5}
+    
+    current_loop_gains: 
+      joint_a1: {p: 10.5, i: 1.1, d: 0.0, i_clamp: 10.0}
+      joint_a2: {p: 10.5, i: 1.1, d: 0.0, i_clamp: 10.0}
+      joint_a3: {p: 10.5, i: 1.1, d: 0.0, i_clamp: 10.0}
+      joint_a4: {p: 10.5, i: 1.1, d: 0.0, i_clamp: 10.0}
+      joint_a5: {p: 10.5, i: 1.1, d: 0.0, i_clamp: 10.0}
+      joint_a6: {p: 10.5, i: 1.1, d: 0.0, i_clamp: 5.0}
+      joint_a7: {p: 10.5, i: 1.1, d: 0.0, i_clamp: 5.0}
+
+    gear:
+      joint_a1: {ratio: 100.0, eff: 1.0}
+      joint_a2: {ratio: 100.0, eff: 1.0}
+      joint_a3: {ratio: 100.0, eff: 1.0}
+      joint_a4: {ratio: 100.0, eff: 1.0}
+      joint_a5: {ratio: 100.0, eff: 1.0}
+      joint_a6: {ratio: 100.0, eff: 1.0}
+      joint_a7: {ratio: 100.0, eff: 1.0}
