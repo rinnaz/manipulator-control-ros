@@ -3,11 +3,23 @@
       <world name='ast_world'>
         
         <!-- Set physics properties section -->
-        <physics name='default_physics' default='0' type='ode'>
+        <!-- <physics name='default_physics' default='0' type='ode'>
           <max_step_size>0.001</max_step_size>
           <real_time_factor>1</real_time_factor>
           <real_time_update_rate>1000</real_time_update_rate>
-        </physics>
+        </physics> -->
+
+        <physics name='precise' type='ode' default='true'>
+          <max_step_size>0.0002</max_step_size>
+          <real_time_factor>1</real_time_factor>
+          <real_time_update_rate>5000</real_time_update_rate>
+          <ode>
+            <solver>
+              <type>quick</type>
+              <iters>150</iters>
+            </solver>
+          </ode>
+        </physics>    
 
         <gravity>0 0 -9.8</gravity>
         

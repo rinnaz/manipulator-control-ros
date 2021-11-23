@@ -35,7 +35,7 @@ def talker(qlist):
 if __name__ == '__main__':
   
     qlist = [
-                -0.1,
+                -0.0,
                 -m.pi/4+0.4,
                 0.,
                 m.pi/4+0.7,
